@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/moviePage.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="icon" href="/logo.jpg" type="image/x-icon">
+    <title>
+        <%= data.englishName %>
+    </title>
+</head>
+
+<body>
+    <div class="loading">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+    </div>
+    <div class="content">
+        <img src="<%= data.posterUrl %>" class="back" alt="">
+        <div class="main">
+            <div class="poster"><img src="<%= data.posterUrl %>" alt="poster"></div>
+            <div class="info">
+                <div class="name">Name: <%= data.englishName %>
+                </div>
+                <div class="story">story: <%= data.movieStory %>
+                </div>
+                <div class="advs">
+                    <div class="quality">quality: <%= data.termsContent.find(term=> Object.keys(term)[0] ===
+                            'الجودة')?.['الجودة'] || 'no quality found' %></div>
+                    <div class="year">year: <%= data.year%>
+                    </div>
+                    <div class="time">Duration: <%= data.termsContent.find(term=> Object.keys(term)[0] ===
+                            'المدة')?.['المدة'] || 'no duration found' %></div>
+                </div>
+            </div>
+        </div>
+        <div class="watch">
+            <div class="servers">
+                <% for (let i=0; i < data.noads.length; i++) { %>
+
+                    <button data="<%= data.noads[i].url %>" class="noAds">
+                        <%= data.noads[i].server %>
+                    </button>
+                    <% } %>
+
+                        <% for (let i=0; i < data.ads.length; i++) { %>
+                            <button data="<%= data.ads[i].url %>" class="withAds">
+                                <span>ads</span>
+                                <%= data.ads[i].server %>
+                            </button>
+                            <% } %>
+            </div>
+            <div class="watchbox">
+                <iframe style="display: none;" id="iframe" allowfullscreen src="" frameborder="0"></iframe>
+                <video class="video-js" onerror="" style="display: none;" preload="auto" allowfullscreen id="video"
+                    controls data-setup='{}'>
+                    <source id="source" src="nothing" type="application/x-mpegURL">
+                </video>
+            </div>
+        </div>
+        <div class="download">
+            <h3>download</h3>
+            <div class="downloadLinks">
+                <% for (let i=0; i < data.downloadLinks.length; i++) { %>
+                    <a href="<%= data.downloadLinks[i].url %>">
+                        <%= data.downloadLinks[i].resolution %> <span><i
+                                    class="fa-solid fa-cloud-arrow-down"></i></span>
+                    </a>
+
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="icon"><a href=""> @vnun.y</a></div>
+    </footer>
+    <script src="java/moviePage.js"></script>
+    <script src="java/loading.js"></script>
+
+</body>
+
+</html>

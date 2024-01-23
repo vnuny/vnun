@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="icon" href="/logo.jpg" type="image/x-icon">
+    <title>vnun</title>
+</head>
+
+<body>
+    <div class="loading">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+    </div>
+    <div class="light"></div>
+    <% if (message) { %>
+        <div id="error">
+            <p class="errorValue">
+                <%= message %>
+            </p>
+        </div>
+        <% } %>
+            <div class="main">
+                <h2 class="mainText">What would you like to watch this afternoon?</h2>
+                <form method="get" action="/search">
+                    <div class="input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="What do you want to watch?" name="search" autofocus>
+                    </div>
+                </form>
+            </div>
+            <script src="java/index.js"></script>
+            <script src="java/loading.js"></script>
+</body>
+
+</html>

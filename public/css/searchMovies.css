@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    text-decoration: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+    background: linear-gradient(to bottom, #121229, #000000);
+}
+
+header{
+    width: 100%;
+    color: white;
+    padding-top: 40px;
+    font-size: 1.2em;
+    padding-left: 30px;
+}
+.grid{
+    width: 100%;
+    height: fit-content;
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.grid .movie{
+    width: 230px;
+    min-height: 400px;
+    max-height: 500px;
+    height: fit-content;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    transition: all 0.2s ease-in-out;
+    margin: 5px 5px;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    position: relative;
+
+}
+.grid .movie:hover{
+    background-color: rgb(30 30 50);
+}
+.grid .movie:hover .poster img{
+    width: 85%;
+}
+
+.grid .movie:hover .grid .movie .description .title{
+    font-size: 1em;
+}
+.grid .movie .description{
+    color: white;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.grid .movie .description .title{
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-right: 10px;
+}
+.grid .movie .description .info{
+    font-size: 0.8em;
+    padding-top: 5px;
+    color: #606b7a;
+}
+.grid .movie .poster{
+    display: flex;
+    justify-content: center;
+}
+.grid .movie .poster img{
+    aspect-ratio: auto;
+    width: 90%;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+.selectBtn{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}   

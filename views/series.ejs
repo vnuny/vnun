@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/series.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="icon" href="/logo.jpg" type="image/x-icon">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <div class="loading">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+    </div>
+    <div class="content">
+        <img src="<%= moviePoster %>" class="back" alt="">
+        <div class="main">
+            <div class="poster"><img src="<%= moviePoster %>" alt="poster"></div>
+            <div class="info">
+                <div class="name">Name: <%= title %>
+                        <%= seasonNumber %>
+                </div>
+                <div class="story">story:</div>
+                <div class="advs">
+                    <div class="quality">quality: </div>
+                    <div class="year">year:</div>
+                    <div class="time">Duration: </div>
+                </div>
+            </div>
+        </div>
+        <div class="seasons">
+            <div class="container">
+                <div class="slider">
+                    <% for(let i=0; i<data.length; i++) { %>
+                        <form action="/getseason" method="post">
+                            <p>
+                                <%= data[i].text %>
+                            </p>
+                            <input type="hidden" name="seasonUrl" value="<%= data[i].href %>">
+                            <input type="hidden" value="<%= title %>" name="title">
+                            <input type="hidden" value="<%= moviePoster %>" name="moviePoster">
+                            <input type="hidden" value="<%= movieUrl %>" name="MovieUrl">
+                            <input type="hidden" value="<%= data[i].text %>" name="seasonName">
+                        </form>
+                        <% } %>
+
+                </div>
+                <div class="episodesBox">
+                    <div class="season">
+                        <% for(let i=0; i<episodes.length; i++) { %>
+                            <form action="/getepisode" method="post" class="episode">
+                                <h1>
+                                    <%= episodes[i].text %>
+                                </h1>
+                                <i class="fa-regular fa-play"></i>
+                                <input type="hidden" value="<%= episodes[i].link %>" name="episodeUrl">
+                                <input type="hidden" value="<%= title %>" name="title">
+                                <input type="hidden" value="<%= moviePoster %>" name="moviePoster">
+                            </form>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="icon"><a href=""> @vnun.y</a></div>
+    </footer>
+    <script src="java/series.js"></script>
+    <script src="java/loading.js"></script>
+
+</body>
+
+</html>
